@@ -7,7 +7,7 @@ function Home() {
     <div>
       <div className="title">Trading Quiz</div>
       <img src={image} alt="tradinggif"></img>
-      <button>Begineer</button>
+      <button>Beginner</button>
       <button>Expert</button>
       <button>Progress</button>
     </div>
