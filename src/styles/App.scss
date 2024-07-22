@@ -5,3 +5,23 @@
   text-align: center;
   background-color: $primary-color;
 }
+
+.home-container {
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.animated-candles{
+  width: 400px;
+  height: 350px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  height: 100vh;
+}

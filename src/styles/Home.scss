@@ -3,3 +3,11 @@
 .title {
   color: $main-font-color;
 }
+
+.level-container{
+  display: flex;
+  color: white;
+  width: 90%;
+  border: 2px solid white;
+  margin-bottom: 10px;
+}
