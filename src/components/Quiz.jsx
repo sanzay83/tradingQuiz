@@ -6,47 +6,29 @@ import sell from "../assets/sell.svg";
 import "../styles/Quiz.scss";
 
 function Quiz() {
-  const [url, setUrl] = useState("");
-  const location = useLocation();
-  const navigate = useNavigate();
-  //const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [noOfQuestion, setNoOfQuestion] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [popupImage, setPopupImage] = useState();
   const [showNextButton, setShowNextButton] = useState(false);
   const [error, setError] = useState(null);
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const { level } = location.state;
 
-  const questions = [
-    {
-      id: 1,
-      image:
-        "https://www.trade.education/wp-content/uploads/head-and-shoulders-pattern.jpg",
-      answer_image:
-        "https://www.trade.education/wp-content/uploads/inverse-head-and-shoulders-pattern.jpg",
-      correct_answer: "buy",
-    },
-  ];
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/${level}/items`);
+      setQuestions(response.data);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
-  // const fetchItems = async () => {
-  //   if (level === "easy") {
-  //     setUrl("http://localhost:3000/items");
-  //   } else if (level === "hard") {
-  //     setUrl("http://localhost:3000/items");
-  //   }
-  //   try {
-  //     const response = await axios.get(url);
-  //     setQuestions([response.data]);
-  //   } catch (err) {
-  //     setError(err.message);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchItems();
-  // }, []);
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
   const nextQuestion = () => {
     if (noOfQuestion < questions.length - 1) {
@@ -54,28 +36,28 @@ function Quiz() {
       setShowPopup(false);
       setShowNextButton(false);
     } else {
-      // Navigate to results page when quiz is completed
       navigate("/results", { state: { correctCount } });
     }
   };
 
   const handleChoice = (choice) => {
     const currentQuestion = questions[noOfQuestion];
-    if (choice === currentQuestion.correct_answer) {
+    if (choice === currentQuestion.buysell) {
       setCorrectCount(correctCount + 1);
     }
-    setPopupImage(currentQuestion.answer_image);
+    setPopupImage(currentQuestion.answer);
     setShowPopup(true);
     setShowNextButton(true);
   };
 
   return (
     <div className="quiz-container">
-      {!showPopup && (
+      {error && <p className="error-message">{error}</p>}
+      {!showPopup && questions.length > 0 && (
         <>
           <p>{`${noOfQuestion + 1} / ${questions.length}`}</p>
           <img
-            src={questions[noOfQuestion].image}
+            src={questions[noOfQuestion].question}
             height="100px"
             width="100px"
             className="level-picture"
@@ -87,13 +69,13 @@ function Quiz() {
               alt="buy"
               src={buy}
               className="option-buttons buy"
-              onClick={() => handleChoice("buy")}
+              onClick={() => handleChoice(1)}
             />
             <img
               alt="sell"
               src={sell}
               className="option-buttons sell"
-              onClick={() => handleChoice("sell")}
+              onClick={() => handleChoice(0)}
             />
           </div>
         </>
