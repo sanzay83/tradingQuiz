@@ -1,40 +1,41 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
+import "../styles/Quiz.scss";
 import buy from "../assets/buy.svg";
 import sell from "../assets/sell.svg";
-import "../styles/Quiz.scss";
 
-function Quiz() {
+const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [noOfQuestion, setNoOfQuestion] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [popupImage, setPopupImage] = useState();
-  const [showNextButton, setShowNextButton] = useState(false);
-  const [error, setError] = useState(null);
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const { level } = location.state;
 
   const fetchItems = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/${level}/items`);
       setQuestions(response.data);
+      setLoading(false);
     } catch (err) {
       setError(err.message);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchItems();
-  }, []);
+  }, [level]);
 
   const nextQuestion = () => {
     if (noOfQuestion < questions.length - 1) {
       setNoOfQuestion(noOfQuestion + 1);
       setShowPopup(false);
-      setShowNextButton(false);
     } else {
       navigate("/results", { state: { correctCount } });
     }
@@ -47,54 +48,56 @@ function Quiz() {
     }
     setPopupImage(currentQuestion.answer);
     setShowPopup(true);
-    setShowNextButton(true);
+    //setShowNextButton(true);
   };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="quiz-container">
-      {error && <p className="error-message">{error}</p>}
-      {!showPopup && questions.length > 0 && (
-        <>
-          <p>{`${noOfQuestion + 1} / ${questions.length}`}</p>
-          <img
-            src={questions[noOfQuestion].question}
-            height="100px"
-            width="100px"
-            className="level-picture"
-            alt="Trading Chart"
-          />
-          <p className="text">What would you do?</p>
-          <div className="options-container">
+      <div className="quiz-block">
+        {error && <p className="error-message">{error}</p>}
+        <h3>{`${noOfQuestion + 1} / ${questions.length}`}</h3>
+        {!showPopup ? (
+          <>
             <img
-              alt="buy"
-              src={buy}
-              className="option-buttons buy"
-              onClick={() => handleChoice(1)}
+              src={questions[noOfQuestion].question}
+              className="level-picture"
+              alt="Trading Chart"
             />
+            <h1>What would you do?</h1>
+            <div className="options-container">
+              <img
+                alt="buy"
+                src={buy}
+                className="option-buttons buy"
+                onClick={() => handleChoice(1)}
+              />
+              <img
+                alt="sell"
+                src={sell}
+                className="option-buttons sell"
+                onClick={() => handleChoice(0)}
+              />
+            </div>
+          </>
+        ) : (
+          <>
             <img
-              alt="sell"
-              src={sell}
-              className="option-buttons sell"
-              onClick={() => handleChoice(0)}
+              src={popupImage}
+              alt="Answer Chart"
+              className="level-picture"
             />
-          </div>
-        </>
-      )}
-
-      {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <img src={popupImage} alt="Answer Chart" className="answer-image" />
-            {showNextButton && (
-              <button className="next-button" onClick={nextQuestion}>
-                Next chart
-              </button>
-            )}
-          </div>
-        </div>
-      )}
+            <h1>Answer</h1>
+            <button className="next-button" onClick={nextQuestion}>
+              <h1>Next</h1>
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default Quiz;

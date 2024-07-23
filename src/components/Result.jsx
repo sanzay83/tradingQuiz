@@ -7,7 +7,7 @@ function Result() {
   const { correctCount } = location.state;
 
   return (
-    <div>
+    <div className="result-container">
       <h2>Quiz Results</h2>
       <p>Correct Answers: {correctCount}</p>
     </div>

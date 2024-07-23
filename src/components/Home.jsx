@@ -28,15 +28,7 @@ function Home() {
     <div className="home-container">
       <div className="title">Trading Quiz</div>
       <div className="bb">
-        <div>
-          <img
-            src={image}
-            height="100px"
-            width="100px"
-            className="level-picture"
-            alt="tradinggif"
-          />
-        </div>
+        <img src={image} className="level-picture" alt="tradinggif" />
         {levels.map((item, index) => (
           <button
             key={index}

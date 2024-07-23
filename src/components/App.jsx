@@ -1,4 +1,3 @@
-import "../styles/App.scss";
 import Home from "./Home";
 import { Routes, Route } from "react-router-dom";
 import Quiz from "./Quiz";
