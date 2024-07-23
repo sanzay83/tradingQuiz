@@ -1,16 +1,23 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import buy from "../assets/buy.svg";
 import sell from "../assets/sell.svg";
 import "../styles/Quiz.scss";
 
 function Quiz() {
+  const [url, setUrl] = useState("");
+  const location = useLocation();
   const navigate = useNavigate();
+  //const [questions, setQuestions] = useState([]);
   const [noOfQuestion, setNoOfQuestion] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [popupImage, setPopupImage] = useState();
   const [showNextButton, setShowNextButton] = useState(false);
+  const [error, setError] = useState(null);
+
+  const { level } = location.state;
 
   const questions = [
     {
@@ -21,39 +28,25 @@ function Quiz() {
         "https://www.trade.education/wp-content/uploads/inverse-head-and-shoulders-pattern.jpg",
       correct_answer: "buy",
     },
-    {
-      id: 2,
-      image:
-        "https://www.trade.education/wp-content/uploads/head-and-shoulders-pattern.jpg",
-      answer_image:
-        "https://www.trade.education/wp-content/uploads/inverse-head-and-shoulders-pattern.jpg",
-      correct_answer: "buy",
-    },
-    {
-      id: 3,
-      image:
-        "https://www.trade.education/wp-content/uploads/head-and-shoulders-pattern.jpg",
-      answer_image:
-        "https://www.trade.education/wp-content/uploads/inverse-head-and-shoulders-pattern.jpg",
-      correct_answer: "buy",
-    },
-    {
-      id: 4,
-      image:
-        "https://www.trade.education/wp-content/uploads/head-and-shoulders-pattern.jpg",
-      answer_image:
-        "https://www.trade.education/wp-content/uploads/inverse-head-and-shoulders-pattern.jpg",
-      correct_answer: "buy",
-    },
-    {
-      id: 5,
-      image:
-        "https://www.trade.education/wp-content/uploads/head-and-shoulders-pattern.jpg",
-      answer_image:
-        "https://www.trade.education/wp-content/uploads/inverse-head-and-shoulders-pattern.jpg",
-      correct_answer: "buy",
-    },
   ];
+
+  // const fetchItems = async () => {
+  //   if (level === "easy") {
+  //     setUrl("http://localhost:3000/items");
+  //   } else if (level === "hard") {
+  //     setUrl("http://localhost:3000/items");
+  //   }
+  //   try {
+  //     const response = await axios.get(url);
+  //     setQuestions([response.data]);
+  //   } catch (err) {
+  //     setError(err.message);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchItems();
+  // }, []);
 
   const nextQuestion = () => {
     if (noOfQuestion < questions.length - 1) {
