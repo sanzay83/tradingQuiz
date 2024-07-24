@@ -39,7 +39,7 @@ const Quiz = () => {
 			setShowPopup(false);
 		} else {
 			navigate("/results", {
-				state: { correctCount: correctCount, level: level },
+				state: { correctcount: correctCount, difficulty: level },
 			});
 		}
 	};
@@ -54,8 +54,8 @@ const Quiz = () => {
 		//setShowNextButton(true);
 	};
 
-	if (loading) return <div>Loading...</div>;
-	if (error) return <div>Error: {error}</div>;
+	if (loading) return <div className="quiz-container">Loading...</div>;
+	if (error) return <div className="quiz-container">Error: {error}</div>;
 
 	return (
 		<div className="quiz-container">
