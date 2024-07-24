@@ -39,7 +39,7 @@ const Quiz = () => {
 			setShowPopup(false);
 		} else {
 			navigate("/results", {
-				state: { correctcount: correctCount, difficulty: level },
+				state: { correctCount: correctCount, level: level },
 			});
 		}
 	};
@@ -92,6 +92,13 @@ const Quiz = () => {
 							alt="Answer Chart"
 							className="level-picture"
 						/>
+						{
+							//yaha pani "Answer" ko satta,
+							//you thought the maerket would go up, but it went down
+							//or yes, the market went up as you predicted
+							//or yes, the market went down as you predicted
+							// or You thought the market would go down but it went up
+						}
 						<h1>Answer</h1>
 						<button className="next-button" onClick={nextQuestion}>
 							<h1>Next</h1>
