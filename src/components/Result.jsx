@@ -8,8 +8,8 @@ function Result() {
 	const location = useLocation();
 	const { correctCount, level } = location.state;
 	const navigate = useNavigate();
-	console.log(correctCount);
-	console.log(level);
+	console.log("correctCount:" + correctCount);
+	console.log(":" + level);
 	let imageSrc;
 	let resultText;
 	if (correctCount >= 8) {

@@ -1,0 +1,16 @@
+@import "./main.scss";
+
+.splash-screen {
+	background: $primary-color; // Assuming $primary-color is defined elsewhere
+	height: 100vh; // Full height of the viewport
+	display: flex;
+	justify-content: center; // Center horizontally
+	align-items: center; // Center vertically
+	color: #fff; // White text color, adjust as needed
+	font-size: 24px; // Adjust font size as needed
+	text-align: center; // Center align text
+
+	.loading-text {
+		//type writer wala stle kasari leraune
+	}
+}

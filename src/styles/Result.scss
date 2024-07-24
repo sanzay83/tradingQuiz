@@ -56,7 +56,3 @@ h2 {
 	cursor: pointer;
 	transition: background-color 0.3s ease;
 }
-
-.buttons-container button:hover {
-	background-color: darken($primary-color, 10%);
-}
