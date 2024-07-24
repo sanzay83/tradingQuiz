@@ -6,9 +6,9 @@ import image from "../assets/tradeimg.GIF";
 
 function Result() {
 	const location = useLocation();
-	const { correctCount } = location.state.correctcount;
-	const { level } = location.state.difficulty;
+	const { correctCount, level } = location.state;
 	const navigate = useNavigate();
+	console.log(correctCount);
 	console.log(level);
 	let imageSrc;
 	let resultText;
