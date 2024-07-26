@@ -1,0 +1,16 @@
+@import "./main.scss";
+
+.splash-screen {
+	background: $primary-color;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	font-size: 24px;
+	text-align: center;
+
+	.loading-text {
+		//type writer wala style kasari leraune
+	}
+}
