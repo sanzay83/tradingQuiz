@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Splashscreen.scss";
 
 function Splashscreen() {
   const loadingPhrases = [
@@ -41,8 +40,9 @@ function Splashscreen() {
   }, []);
 
   return (
-    <div className="splash-screen">
-      <div className="loading-text">{loadingText}</div>
+    <div className="main-container">
+      <h1>{loadingText}</h1>
+      <div className="loader" />
     </div>
   );
 }

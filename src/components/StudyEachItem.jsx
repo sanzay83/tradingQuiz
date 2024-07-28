@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import Loader from "./Loader";
 
 function StudyEachItem() {
   const [items, setItems] = useState([]);
@@ -25,16 +26,14 @@ function StudyEachItem() {
     fetchData();
   }, [type]);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  if (loading) return <Loader />;
 
   if (error) {
     return <p>{error}</p>;
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className="main-container">
       {items.map((item) => (
         <>
           ID:{item.id}

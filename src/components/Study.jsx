@@ -27,7 +27,7 @@ function Study() {
   };
 
   return (
-    <div>
+    <div className="main-container">
       {studyType.map((item, index) => (
         <button
           key={index}

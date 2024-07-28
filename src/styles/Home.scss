@@ -1,14 +1,7 @@
 @import "./main.scss";
 
-.home-container {
-  display: flex;
+.main-container {
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: $primary-color;
-  color: white;
-  font-family: "Arial", sans-serif;
 }
 
 .title {

@@ -2,3 +2,27 @@ $primary-color: #040404;
 $buy-color: #0d9b84;
 $sell-color: #ee3747;
 $main-font-color: #ffffff;
+
+.main-container {
+  background-color: $primary-color;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: white;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 10px solid #1cd42550;
+  border-top-color: #1cd425;
+  animation: spin013151 1s linear infinite;
+  border-radius: 100%;
+}
+
+@keyframes spin013151 {
+  to {
+    transform: rotate(360deg);
+  }
+}

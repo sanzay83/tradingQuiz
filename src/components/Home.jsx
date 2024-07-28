@@ -37,7 +37,7 @@ function Home() {
   };
 
   return (
-    <div className="home-container">
+    <div className="main-container">
       <div className="title">Trading Quiz</div>
       <div className="bb">
         <img src={image} className="level-picture" alt="tradinggif" />
