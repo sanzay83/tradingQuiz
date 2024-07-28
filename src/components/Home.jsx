@@ -20,10 +20,20 @@ function Home() {
       desc: "Read the charts like the back of their hand",
       click: "hard",
     },
+    {
+      image: "study",
+      title: "Study Material",
+      desc: "Read about the charts and candles",
+      click: "study",
+    },
   ];
 
   const handleButton = (item) => {
-    navigate("/quiz", { state: { level: item.click } });
+    if (item.click === "study") {
+      navigate("/study");
+    } else {
+      navigate("/quiz", { state: { level: item.click } });
+    }
   };
 
   return (

@@ -4,6 +4,7 @@ import Home from "./Home";
 import Quiz from "./Quiz";
 import Result from "./Result";
 import Study from "./Study";
+import StudyEachItem from "./StudyEachItem";
 import SplashScreen from "./Splashscreen";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/results" element={<Result />} />
           <Route path="/study" element={<Study />} />
+          <Route path="/studyEach" element={<StudyEachItem />} />
         </Routes>
       )}
     </>
