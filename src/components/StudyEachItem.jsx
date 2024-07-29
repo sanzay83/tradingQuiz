@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Loader from "./Loader";
+import "../styles/StudyEachItem.scss";
 
 function StudyEachItem() {
   const [items, setItems] = useState([]);
@@ -35,19 +36,13 @@ function StudyEachItem() {
   return (
     <div className="main-container">
       {items.map((item) => (
-        <>
-          ID:{item.id}
-          <br />
-          Title: {item.title}
-          <br />
-          <img height={"100px"} src={item.thumbnail} alt="img" />
-          <br />
-          <img height={"100px"} src={item.exampleimage} alt="img" />
-          <br />
-          Description: {item.description}
-          <br />
-          Type: {item.type}
-        </>
+        <div className="card">
+          <div className="card2">
+            <img src={item.thumbnail} alt="img" />
+            <br />
+            {item.title}
+          </div>
+        </div>
       ))}
     </div>
   );
