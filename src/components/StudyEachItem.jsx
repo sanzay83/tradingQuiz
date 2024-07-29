@@ -9,7 +9,8 @@ function StudyEachItem() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const location = useLocation();
-  const { type } = location.state;
+  const { title, type } = location.state;
+  //console.log(studyItem);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,17 +35,22 @@ function StudyEachItem() {
   }
 
   return (
-    <div className="main-container">
-      {items.map((item) => (
-        <div className="card">
-          <div className="card2">
-            <img src={item.thumbnail} alt="img" />
-            <br />
-            {item.title}
-          </div>
+    <>
+      <div className="main-container">
+        <h1>{title}</h1>
+        <div className="each-item">
+          {items.map((item) => (
+            <div className="card">
+              <div className="card2">
+                <img src={item.thumbnail} alt="img" />
+                <br />
+                {item.title}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </>
   );
 }
 

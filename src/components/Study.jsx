@@ -22,19 +22,21 @@ function Study() {
     },
   ];
 
-  const handleButton = (item) => {
-    navigate("/studyEach", { state: { type: item.type } });
+  const handleButton = (studyItem) => {
+    navigate("/studyEach", {
+      state: { title: studyItem.title, type: studyItem.type },
+    });
   };
 
   return (
     <div className="main-container">
-      {studyType.map((item, index) => (
+      {studyType.map((studyItem, index) => (
         <button
           key={index}
           className="main-button"
-          onClick={() => handleButton(item)}
+          onClick={() => handleButton(studyItem)}
         >
-          {item.title}
+          {studyItem.title}
         </button>
       ))}
     </div>
