@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Loader from "./Loader";
 import "../styles/StudyEachItem.scss";
 
 function StudyEachItem() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   const location = useLocation();
   const { title, type } = location.state;
-  //console.log(studyItem);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,19 +27,36 @@ function StudyEachItem() {
     fetchData();
   }, [type]);
 
-  if (loading) return <Loader />;
+  if (loading) return <div className="loader" />;
 
   if (error) {
     return <p>{error}</p>;
   }
+
+  const handleButtonClick = (item) => {
+    navigate("/studyitemdetails", {
+      state: {
+        title: item.title,
+        thumbnail: item.thumbnail,
+        exampleimage: item.exampleimage,
+        description: item.description,
+        type: item.type,
+        id: item.id,
+      },
+    });
+  };
 
   return (
     <>
       <div className="main-container">
         <h1>{title}</h1>
         <div className="each-item">
-          {items.map((item) => (
-            <div className="card">
+          {items.map((item, index) => (
+            <div
+              className="card"
+              key={index}
+              onClick={() => handleButtonClick(item)}
+            >
               <div className="card2">
                 <img src={item.thumbnail} alt="img" />
                 <br />

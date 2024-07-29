@@ -6,6 +6,7 @@ import Result from "./Result";
 import Study from "./Study";
 import StudyEachItem from "./StudyEachItem";
 import SplashScreen from "./Splashscreen";
+import StudyItemDetails from "./StudyItemDetails";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +28,7 @@ function App() {
           <Route path="/results" element={<Result />} />
           <Route path="/study" element={<Study />} />
           <Route path="/studyEach" element={<StudyEachItem />} />
+          <Route path="/studyitemdetails" element={<StudyItemDetails />} />
         </Routes>
       )}
     </>
