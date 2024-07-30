@@ -20,7 +20,9 @@ const Quiz = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/${level}/items`);
+      const response = await axios.get(
+        `https://tqbackend.aapugu.com/${level}/items`
+      );
       setQuestions(response.data);
       setLoading(false);
     } catch (err) {

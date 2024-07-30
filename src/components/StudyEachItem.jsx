@@ -15,7 +15,7 @@ function StudyEachItem() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/study/items/${type}`
+          `https://tqbackend.aapugu.com/study/items/${type}`
         );
         setItems(response.data);
         setLoading(false);
