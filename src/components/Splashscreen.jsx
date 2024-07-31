@@ -41,8 +41,8 @@ function Splashscreen() {
 
   return (
     <div className="main-container">
-      <h1>{loadingText}</h1>
       <div className="loader" />
+      <h1>{loadingText}</h1>
     </div>
   );
 }
