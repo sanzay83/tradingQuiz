@@ -16,6 +16,11 @@
   transition: all 0.3s;
 }
 
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .card2 {
   width: 190px;
   height: 254px;
