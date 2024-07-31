@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/StudyEachItem.scss";
+import { API_URL } from "../config";
+import Loader from "./Loader";
 
 function StudyEachItem() {
   const [items, setItems] = useState([]);
@@ -14,9 +16,7 @@ function StudyEachItem() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://tqbackend.aapugu.com/study/items/${type}`
-        );
+        const response = await axios.get(`${API_URL}/study/items/${type}`);
         setItems(response.data);
         setLoading(false);
       } catch (err) {
@@ -27,7 +27,7 @@ function StudyEachItem() {
     fetchData();
   }, [type]);
 
-  if (loading) return <div className="loader" />;
+  if (loading) return <Loader />;
 
   if (error) {
     return <p>{error}</p>;

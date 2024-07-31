@@ -4,6 +4,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Quiz.scss";
 import buy from "../assets/buy.svg";
 import sell from "../assets/sell.svg";
+import { API_URL } from "../config";
+import Loader from "./Loader";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -20,9 +22,7 @@ const Quiz = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get(
-        `https://tqbackend.aapugu.com/${level}/items`
-      );
+      const response = await axios.get(`${API_URL}/${level}/items`);
       setQuestions(response.data);
       setLoading(false);
     } catch (err) {
@@ -55,7 +55,7 @@ const Quiz = () => {
     setShowPopup(true);
   };
 
-  if (loading) return <div className="loader" />;
+  if (loading) return <Loader />;
   if (error) return <div className="quiz-container">Error: {error}</div>;
 
   return (
