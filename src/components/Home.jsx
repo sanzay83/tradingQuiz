@@ -1,9 +1,7 @@
 import React from "react";
 import "../styles/Home.scss";
-import image from "../assets/tradeimg.GIF";
 import easyimage from "../assets/easy.png";
 import hardimage from "../assets/hard.png";
-import studyimage from "../assets/study.png";
 import { useNavigate } from "react-router-dom";
 import basic_image from "../assets/principles.png";
 import candle_image from "../assets/candlesticks.png";

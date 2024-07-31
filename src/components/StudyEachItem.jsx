@@ -39,6 +39,7 @@ function StudyEachItem() {
         title: item.title,
         thumbnail: item.thumbnail,
         exampleimage: item.exampleimage,
+        exampleimage2: item.exampleimage2,
         description: item.description,
         type: item.type,
         id: item.id,
