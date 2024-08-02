@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Result.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -12,6 +12,7 @@ function Result() {
   console.log(":" + level);
   let imageSrc;
   let resultText;
+
   if (correctCount >= 8) {
     imageSrc = image;
     resultText = "Congratulations! You did an excellent job!";
@@ -22,6 +23,26 @@ function Result() {
     imageSrc = image;
     resultText = "Keep practicing to improve your score.";
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("total_correct") !== undefined) {
+      console.log("if");
+      localStorage.setItem(
+        "total_correct",
+        +localStorage.getItem("total_correct") + +correctCount
+      );
+    } else {
+      console.log("else");
+      localStorage.setItem("total_correct", correctCount);
+    }
+
+    localStorage.getItem("total_attempt") !== undefined
+      ? localStorage.setItem(
+          "total_attempt",
+          +localStorage.getItem("total_attempt") + +1
+        )
+      : localStorage.setItem("total_attempt", 1);
+  }, []);
 
   const handleHomeClick = () => {
     navigate("/");
@@ -37,6 +58,9 @@ function Result() {
       <div className="result-content">
         <div className="result-text">
           <p>Correct Answers: {correctCount}</p>
+
+          <p>Total Correct Answers: {localStorage.getItem("total_correct")}</p>
+          <p>Total Attempt: {localStorage.getItem("total_attempt")}</p>
           <p>{resultText}</p>
         </div>
         <div className="result-image">

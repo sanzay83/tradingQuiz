@@ -1,0 +1,39 @@
+@import "./main.scss";
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.achievements {
+  justify-content: space-evenly;
+}
+.progress {
+  justify-content: space-between;
+}
+
+.progressbar {
+  color: $primary-color;
+  font-weight: bolder;
+  text-align: end;
+  padding: 5px;
+}
+
+.red {
+  background-color: $sell-color;
+  width: 100%;
+  z-index: -1;
+}
+.green {
+  background-color: $buy-color;
+  position: absolute;
+  width: 80%;
+  z-index: 1;
+}
+.achievement {
+  height: auto;
+  width: 200px;
+}
+.grayscale {
+  filter: grayscale(80%);
+}
