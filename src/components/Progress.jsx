@@ -9,22 +9,37 @@ import high_image from "../assets/high.png";
 function Progress() {
   let total_attempts = +localStorage.getItem("total_attempt") * 10;
   let total_correct = localStorage.getItem("total_correct");
+  let win_percent = (total_correct / total_attempts) * 100;
   let conditional_text = (total_correct / total_attempts) * 100 + "%";
+
+  /*switch case 
+  win > 75 
+  win > 45 
+  win < 45
+  */
 
   return (
     <div className="main-container">
-      <div className="row-container">
+      <div className="achievements row-container">
         <div>
-          {" "}
-          <img src={low_image} />
+          <img
+            className={`achievement ${win_percent < 45 ? "" : "grayscale"} `}
+            src={low_image}
+          />
         </div>
         <div>
-          {" "}
-          <img src={mid_image} />
+          <img
+            className={`achievement ${
+              win_percent > 45 && win_percent < 75 ? "" : "grayscale"
+            } `}
+            src={mid_image}
+          />
         </div>
         <div>
-          {" "}
-          <img src={high_image} />
+          <img
+            className={`achievement ${win_percent > 45 ? "" : "grayscale"} `}
+            src={high_image}
+          />
         </div>
       </div>
       <div className="row-container progress">
