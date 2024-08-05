@@ -12,38 +12,29 @@ function Progress() {
   let win_percent = (total_correct / total_attempts) * 100;
   let conditional_text = (total_correct / total_attempts) * 100 + "%";
 
-  /*switch case 
-  win > 75 
-  win > 45 
-  win < 45
-  */
-
   return (
     <div className="main-container">
       <div className="achievements row-container">
-        <div>
-          <img
-            className={`achievement ${win_percent < 45 ? "" : "grayscale"} `}
-            src={low_image}
-          />
-        </div>
-        <div>
-          <img
-            className={`achievement ${
-              win_percent > 45 && win_percent < 75 ? "" : "grayscale"
-            } `}
-            src={mid_image}
-          />
-        </div>
-        <div>
-          <img
-            className={`achievement ${win_percent > 45 ? "" : "grayscale"} `}
-            src={high_image}
-          />
-        </div>
+        <img
+          className={`achievement ${win_percent < 45 ? "" : "grayscale"} `}
+          src={low_image}
+        />
+        <img
+          className={`achievement ${
+            win_percent > 45 && win_percent < 75 ? "" : "grayscale"
+          } `}
+          src={mid_image}
+        />
+        <img
+          className={`achievement ${win_percent > 75 ? "" : "grayscale"} `}
+          src={high_image}
+        />
       </div>
       <div className="row-container progress">
-        <div width={conditional_text} className="progressbar green">
+        <div
+          style={{ width: `${win_percent}` + "%" }}
+          className="progressbar green"
+        >
           {total_correct}
         </div>
         <div className="progressbar red">{total_attempts - total_correct}</div>
