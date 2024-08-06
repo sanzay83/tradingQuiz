@@ -19,6 +19,9 @@
 }
 
 .options-container {
+  position: absolute; /* Fixes the container at the bottom */
+  bottom: 0;
+  margin-bottom: 25px;
   width: 100%;
   display: flex;
   justify-content: center;

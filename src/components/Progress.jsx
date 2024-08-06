@@ -13,7 +13,7 @@ function Progress() {
   let conditional_text = (total_correct / total_attempts) * 100 + "%";
 
   return (
-    <div className="main-container">
+    <div className="main-container align-top">
       <div className="achievements row-container">
         <img
           className={`achievement ${win_percent < 45 ? "" : "grayscale"} `}

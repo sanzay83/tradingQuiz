@@ -4,6 +4,7 @@ $sell-color: #ee3747;
 $main-font-color: #ffffff;
 
 .main-container {
+  position: relative;
   padding: 3%;
   //background-image: url("../assets/bvbc.png");
   background-color: $primary-color;
@@ -48,4 +49,8 @@ $main-font-color: #ffffff;
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.align-top {
+  justify-content: flex-start;
 }
