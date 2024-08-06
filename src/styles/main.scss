@@ -41,7 +41,7 @@ $main-font-color: #ffffff;
   position: relative;
 }
 
-.row-column {
+.flex-row {
   display: flex;
   flex-direction: row;
 }
@@ -53,4 +53,11 @@ $main-font-color: #ffffff;
 
 .align-top {
   justify-content: flex-start;
+}
+
+.red {
+  background-color: $sell-color;
+}
+.green {
+  background-color: $buy-color;
 }

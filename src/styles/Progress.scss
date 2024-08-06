@@ -15,7 +15,6 @@
 }
 
 .progressbar {
-  color: $primary-color;
   font-weight: bolder;
   text-align: end;
   padding: 5px;
@@ -26,9 +25,11 @@
   width: 100%;
   z-index: -1;
 }
+.ontop {
+  position: absolute;
+}
 .green {
   background-color: $buy-color;
-  position: absolute;
   z-index: 1;
 }
 .achievement {

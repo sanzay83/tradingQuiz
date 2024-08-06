@@ -33,7 +33,7 @@ function Progress() {
       <div className="row-container progress">
         <div
           style={{ width: `${win_percent}` + "%" }}
-          className="progressbar green"
+          className="progressbar green ontop"
         >
           {total_correct}
         </div>

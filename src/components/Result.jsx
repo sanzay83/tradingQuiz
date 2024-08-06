@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import "../styles/Result.scss";
+import "../styles/main.scss";
 import { useLocation, useNavigate } from "react-router-dom";
-
-import image from "../assets/tradeimg.GIF";
 
 function Result() {
   const location = useLocation();
@@ -10,18 +9,19 @@ function Result() {
   const navigate = useNavigate();
   console.log("correctCount:" + correctCount);
   console.log(":" + level);
-  let imageSrc;
   let resultText;
+  const winCount = (+correctCount / 10) * 100,
+    loseCount = ((10 - correctCount) / 10) * 100;
 
   if (correctCount >= 8) {
-    imageSrc = image;
-    resultText = "Congratulations! You did an excellent job!";
+    resultText =
+      "Congratulations! You did an excellent job! You are ready for the real world.";
   } else if (correctCount >= 5) {
-    imageSrc = image;
-    resultText = "Good effort! You did well.";
+    resultText =
+      "Good effort! You are better than the average but you can still improve your skills";
   } else {
-    imageSrc = image;
-    resultText = "Keep practicing to improve your score.";
+    resultText =
+      "You preformed lower than the average. In the real markets you would have blown your account. Hit the study sections and keep practicing to improve your score.";
   }
 
   useEffect(() => {
@@ -53,18 +53,25 @@ function Result() {
   };
 
   return (
-    <div className="main-container">
-      <h2>Quiz Results</h2>
+    <div className="main-container align-top">
+      <h2>Trade Results</h2>
       <div className="result-content">
         <div className="result-text">
-          <p>Correct Answers: {correctCount}</p>
-
-          <p>Total Correct Answers: {localStorage.getItem("total_correct")}</p>
-          <p>Total Attempt: {localStorage.getItem("total_attempt")}</p>
+          <div className="flex-row progress">
+            <div
+              className="progressbar green"
+              style={{ width: `${winCount}` + "%" }}
+            >
+              {correctCount}
+            </div>
+            <div
+              className="progressbar red"
+              style={{ width: `${loseCount}` + "%" }}
+            >
+              {10 - correctCount}
+            </div>
+          </div>
           <p>{resultText}</p>
-        </div>
-        <div className="result-image">
-          <img src={imageSrc} alt="Result" />
         </div>
       </div>
       <div className="buttons-container">
