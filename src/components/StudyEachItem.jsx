@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import axios from "axios";
 import "../styles/StudyEachItem.scss";
 import { API_URL } from "../config";
@@ -12,6 +13,9 @@ function StudyEachItem() {
   const navigate = useNavigate();
   const location = useLocation();
   const { title, type } = location.state;
+  const goback = () => {
+    navigate("/");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +54,7 @@ function StudyEachItem() {
   return (
     <>
       <div className="main-container">
+        <IoMdArrowRoundBack className="exit" onClick={goback} />
         <h1>{title}</h1>
         <div className="each-item">
           {items.map((item, index) =>

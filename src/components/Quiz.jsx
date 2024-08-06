@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { IoCloseSharp } from "react-icons/io5";
 import "../styles/Quiz.scss";
 import buy from "../assets/buy.svg";
 import sell from "../assets/sell.svg";
@@ -55,11 +56,17 @@ const Quiz = () => {
     setShowPopup(true);
   };
 
+  const goback = () => {
+    navigate("/");
+  };
+
   if (loading) return <Loader />;
   if (error) return <div className="quiz-container">Error: {error}</div>;
 
   return (
     <div className="main-container">
+      <IoCloseSharp className="exit" onClick={goback} />
+
       <div className="quiz-block">
         {error && <p className="error-message">{error}</p>}
         <h3>{`${noOfQuestion + 1} / ${questions.length}`}</h3>
