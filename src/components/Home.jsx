@@ -29,21 +29,28 @@ function Home() {
       title: "Principle",
       type: "P",
       image: basic_image,
+      status: true,
     },
     {
       title: "Candlesticks",
       type: "C",
       image: candle_image,
+
+      status: true,
     },
     {
       title: "Patterns",
       type: "T",
       image: pattern_image,
+
+      status: true,
     },
     {
       title: "SMC",
       type: "S",
       image: smc_image,
+
+      status: false,
     },
   ];
 
@@ -144,25 +151,48 @@ function Home() {
       <div className="home-container">
         <div className="section-title">Grow Your Knowledge</div>
         <div className="container">
-          {studyType.map((studyItem, index) => (
-            <button
-              key={index}
-              className="level-container"
-              onClick={() => handleStudyButton(studyItem)}
-            >
-              <div className="imageholder">
-                <img
-                  src={studyItem.image}
-                  className="level-picture"
-                  alt="tradinggif"
-                />
-              </div>
-              <div className="textholder">
-                <div className="title">{studyItem.title}</div>
-                <div className="description">{studyItem.desc}</div>
-              </div>
-            </button>
-          ))}
+          {studyType.map((studyItem, index) =>
+            studyItem.status === false ? (
+              <button
+                key={index}
+                className={` level-container ${
+                  studyItem.status ? "" : "disabled"
+                } `}
+              >
+                <div className="imageholder">
+                  <img
+                    src={studyItem.image}
+                    className="level-picture"
+                    alt="tradinggif"
+                  />
+                </div>
+                <div className="textholder">
+                  <div className="title">{studyItem.title}</div>
+                  <div className="description">{studyItem.desc}</div>
+                </div>
+              </button>
+            ) : (
+              <button
+                key={index}
+                className={` level-container ${
+                  studyItem.status ? "" : "disabled"
+                } `}
+                onClick={() => handleStudyButton(studyItem)}
+              >
+                <div className="imageholder">
+                  <img
+                    src={studyItem.image}
+                    className="level-picture"
+                    alt="tradinggif"
+                  />
+                </div>
+                <div className="textholder">
+                  <div className="title">{studyItem.title}</div>
+                  <div className="description">{studyItem.desc}</div>
+                </div>
+              </button>
+            )
+          )}
         </div>
       </div>
     </div>

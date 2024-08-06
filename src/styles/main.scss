@@ -4,13 +4,14 @@ $sell-color: #ee3747;
 $main-font-color: #ffffff;
 
 .main-container {
+  position: relative;
   padding: 3%;
   //background-image: url("../assets/bvbc.png");
   background-color: $primary-color;
   backdrop-filter: blur(10px);
   background-size: cover;
   min-height: 100vh;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   display: flex;
   color: white;
@@ -38,4 +39,18 @@ $main-font-color: #ffffff;
   padding: 1%;
   z-index: 1;
   position: relative;
+}
+
+.row-column {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-top {
+  justify-content: flex-start;
 }
