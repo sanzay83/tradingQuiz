@@ -56,9 +56,9 @@ function Progress() {
             </div>
           </div>
           <p>
-            Out of {total_attempts} trades, you managed to get {total_correct}
+            {`Out of ${total_attempts} trades, you managed to get ${total_correct}
             trades right. That leaves you with a win percentage of
-            {Math.round(win_percent * 100) / 100}%
+            ${Math.round(win_percent * 100) / 100}%`}
           </p>
         </>
       )}
