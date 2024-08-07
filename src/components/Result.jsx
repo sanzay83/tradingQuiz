@@ -7,8 +7,6 @@ function Result() {
   const location = useLocation();
   const { correctCount, level } = location.state;
   const navigate = useNavigate();
-  console.log("correctCount:" + correctCount);
-  console.log(":" + level);
   let resultText;
   const winCount = (+correctCount / 10) * 100,
     loseCount = ((10 - correctCount) / 10) * 100;
@@ -26,7 +24,6 @@ function Result() {
 
   useEffect(() => {
     if (localStorage.getItem("total_correct") !== undefined) {
-      console.log("if");
       localStorage.setItem(
         "total_correct",
         +localStorage.getItem("total_correct") + +correctCount
@@ -62,10 +59,10 @@ function Result() {
               className="progressbar green"
               style={{ width: `${winCount}%` }}
             >
-              {correctCount}
+              <div className="progressbar-text">{correctCount}</div>
             </div>
             <div className="progressbar red" style={{ width: `${loseCount}%` }}>
-              {10 - correctCount}
+              <div className="progressbar-text">{10 - correctCount}</div>
             </div>
           </div>
 

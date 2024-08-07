@@ -1,15 +1,5 @@
 @import "./main.scss";
 
-.row-container {
-  display: flex;
-  flex-direction: row;
-  width: 100vw;
-}
-
-.achievements {
-  justify-content: space-evenly;
-  align-items: center;
-}
 .progress {
   justify-content: space-between;
 }
@@ -17,7 +7,10 @@
 .progressbar {
   font-weight: bolder;
   text-align: end;
-  padding: 5px;
+  padding: 5px 0px;
+}
+.progressbar-text {
+  padding-right: 10px;
 }
 
 .red {
@@ -32,9 +25,14 @@
   background-color: $buy-color;
   z-index: 1;
 }
+
+.achievements {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 .achievement {
   height: auto;
-  width: 200px;
+  width: 100%;
 }
 .grayscale {
   filter: grayscale(80%);

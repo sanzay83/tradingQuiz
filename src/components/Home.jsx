@@ -97,7 +97,7 @@ function Home() {
   };
 
   return (
-    <div className="main-container">
+    <div className="main-container align-top">
       <div className="home-container">
         <div className="header">
           <div className="header-left">

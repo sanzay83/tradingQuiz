@@ -4,18 +4,16 @@
   flex-direction: column;
 }
 
-.quiz-block {
-  margin: 5%;
-  max-width: 400px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
+.view-size {
+  height: 100vh;
 }
 
-.quiz-block img {
-  width: 100%;
+.pagination-candles {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  height: 90px;
 }
 
 .options-container {
@@ -25,15 +23,11 @@
 }
 
 .option-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 60px;
   min-width: 100px;
   padding: 10px 10px;
   cursor: pointer;
   border-radius: 5px;
-  border: none;
   outline: none;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   background: rgba(255, 255, 255, 0.1);
@@ -65,9 +59,10 @@
 
 .bar {
   border: 1px solid white;
-  height: 20px;
-  width: 15px;
+  width: 10px;
+  height: 30px;
 }
+
 .flex-row {
   position: absolute;
   top: 0;

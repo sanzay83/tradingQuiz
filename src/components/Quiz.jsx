@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoMdArrowRoundBack } from "react-icons/io";
 import "../styles/Quiz.scss";
 import buy from "../assets/buy.svg";
 import sell from "../assets/sell.svg";
@@ -20,7 +20,7 @@ const Quiz = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { level } = location.state;
-  const [progress, setProgress] = useState([]);
+  const [progress, setProgress] = useState(Array.from(Array(10)));
 
   const fetchItems = async () => {
     try {
@@ -52,11 +52,12 @@ const Quiz = () => {
     const currentQuestion = questions[noOfQuestion];
     if (choice === currentQuestion.buysell) {
       setCorrectCount(correctCount + 1);
-      setProgress([...progress, "right"]);
+      progress[noOfQuestion] = "buy";
+      setProgress(progress);
     } else {
-      setProgress([...progress, "wrong"]);
+      progress[noOfQuestion] = "sell";
+      setProgress(progress);
     }
-    console.log(progress);
     setPopupImage(currentQuestion.answer);
     setShowPopup(true);
   };
@@ -70,54 +71,57 @@ const Quiz = () => {
 
   return (
     <div className="main-container">
-      <IoCloseSharp className="exit" onClick={goback} />
-
-      <div className="quiz-block">
-        {error && <p className="error-message">{error}</p>}
-        <ProgressPagination stats={progress} />
-        {!showPopup ? (
-          <>
-            <img
-              src={questions[noOfQuestion].question}
-              className="level-picture"
-              alt="Trading Chart"
-            />
-            <h1>What would you do?</h1>
-            <div className="options-container">
+      <div className="container view-size">
+        <div className="exit">
+          <IoMdArrowRoundBack size={"2rem"} onClick={goback} />
+        </div>
+        <div className="quiz-block">
+          <ProgressPagination stats={progress} />
+          {error && <p className="error-message">{error}</p>}
+          {!showPopup ? (
+            <>
               <img
-                alt="buy"
-                src={buy}
-                className="option-buttons buy"
-                onClick={() => handleChoice(1)}
+                src={questions[noOfQuestion].question}
+                className="level-picture"
+                alt="Trading Chart"
               />
+              <h1>What would you do?</h1>
+              <div className="options-container">
+                <img
+                  alt="buy"
+                  src={buy}
+                  className="option-buttons buy"
+                  onClick={() => handleChoice(1)}
+                />
+                <img
+                  alt="sell"
+                  src={sell}
+                  className="option-buttons sell"
+                  onClick={() => handleChoice(0)}
+                />
+              </div>
+            </>
+          ) : (
+            <>
               <img
-                alt="sell"
-                src={sell}
-                className="option-buttons sell"
-                onClick={() => handleChoice(0)}
+                src={popupImage}
+                alt="Answer Chart"
+                className="level-picture"
               />
-            </div>
-          </>
-        ) : (
-          <>
-            <img
-              src={popupImage}
-              alt="Answer Chart"
-              className="level-picture"
-            />
-            {
-              //yaha pani "Answer" ko satta,
-              //you thought the maerket would go up, but it went down
-              //or yes, the market went up as you predicted
-              //or yes, the market went down as you predicted
-              // or You thought the market would go down but it went up
-            }
-            <h1>Answer</h1>
-            <button className="next-button" onClick={nextQuestion}>
-              <h1>Next</h1>
-            </button>
-          </>
-        )}
+              {
+                //yaha pani "Answer" ko satta,
+                //you thought the maerket would go up, but it went down
+                //or yes, the market went up as you predicted
+                //or yes, the market went down as you predicted
+                // or You thought the market would go down but it went up
+              }
+              <h1>Answer</h1>
+              <button className="next-button" onClick={nextQuestion}>
+                <h1>Next</h1>
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -15,7 +15,9 @@ function StudyItemDetails() {
   return (
     <div className="main-container">
       <div className="container">
-        <IoMdArrowRoundBack className="exit" onClick={goback} />
+        <div className="exit">
+          <IoMdArrowRoundBack size={"2rem"} onClick={goback} />
+        </div>
 
         <div className="detail-title">
           <img className="card2" src={thumbnail} alt={title} />

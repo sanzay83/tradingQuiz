@@ -26,6 +26,10 @@ $main-font-color: #ffffff;
   background-color: rgba(107, 107, 107, 0.1);
 }
 
+.container .exit {
+  text-align: right;
+}
+
 .borded-lines {
   border: 1px solid $buy-color;
   border-radius: 5px;
@@ -74,11 +78,4 @@ $main-font-color: #ffffff;
 }
 .green {
   background-color: $buy-color;
-}
-
-.exit {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
 }
