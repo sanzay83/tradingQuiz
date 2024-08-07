@@ -10,23 +10,22 @@
 }
 
 .title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
   gap: 20px;
   max-width: 500px;
   border: 1px solid $buy-color;
   border-radius: 5px;
   margin-top: -15px;
-  padding: 20px;
+  padding: 10px;
   background-color: rgba(107, 107, 107, 0.1);
+}
+
+.two-fr {
+  grid-template-columns: 1fr 1fr;
 }
 
 .container img {
@@ -38,8 +37,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 150px;
-  max-width: 160px;
+  min-width: 120px;
+  max-width: 100%;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -65,11 +64,11 @@
 }
 
 .level-container .textholder {
-  padding: 20px;
+  padding: 10px;
 }
 
 .level-container .title {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 10px;
   text-align: left;
 }

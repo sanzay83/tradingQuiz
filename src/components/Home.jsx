@@ -124,7 +124,7 @@ function Home() {
       </div>
       <div className="home-container">
         <div className="section-title">Test your Skills</div>
-        <div className="container">
+        <div className="container two-fr">
           {levels.map((item, index) => (
             <button
               key={index}
@@ -147,7 +147,7 @@ function Home() {
       </div>
       <div className="home-container">
         <div className="section-title">Grow Your Knowledge</div>
-        <div className="container">
+        <div className="container two-fr">
           {studyType.map((studyItem, index) =>
             studyItem.status === false ? (
               <button
