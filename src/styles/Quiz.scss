@@ -19,9 +19,6 @@
 }
 
 .options-container {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 25px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -64,4 +61,10 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.bar {
+  border: 1px solid white;
+  height: 20px;
+  width: 15px;
 }

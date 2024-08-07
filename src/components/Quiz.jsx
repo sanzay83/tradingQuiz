@@ -7,6 +7,7 @@ import buy from "../assets/buy.svg";
 import sell from "../assets/sell.svg";
 import { API_URL } from "../config";
 import Loader from "./Loader";
+import ProgressPagination from "./ProgressPagination";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -20,6 +21,7 @@ const Quiz = () => {
   const location = useLocation();
   const { level } = location.state;
   console.log(level);
+  const [progress, setProgress] = useState([]);
 
   const fetchItems = async () => {
     try {
@@ -51,7 +53,11 @@ const Quiz = () => {
     const currentQuestion = questions[noOfQuestion];
     if (choice === currentQuestion.buysell) {
       setCorrectCount(correctCount + 1);
+      progress.push("right");
+    } else {
+      progress.push("wrong");
     }
+    console.log(progress);
     setPopupImage(currentQuestion.answer);
     setShowPopup(true);
   };
@@ -69,6 +75,7 @@ const Quiz = () => {
 
       <div className="quiz-block">
         {error && <p className="error-message">{error}</p>}
+        <ProgressPagination stats={progress} />
         <h3>{`${noOfQuestion + 1} / ${questions.length}`}</h3>
         {!showPopup ? (
           <>
