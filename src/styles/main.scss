@@ -20,8 +20,8 @@ $main-font-color: #ffffff;
 .loader {
   width: 60px;
   height: 60px;
-  border: 10px solid #1cd42550;
-  border-top-color: #1cd425;
+  border: 10px solid $sell-color;
+  border-top-color: $buy-color;
   animation: spin013151 1s linear infinite;
   border-radius: 100%;
 }
