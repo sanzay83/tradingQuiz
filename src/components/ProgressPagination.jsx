@@ -3,13 +3,14 @@ import React from "react";
 function ProgressPagination({ stats }) {
   let stat = stats;
   const redOrGreen = (check) => {
-    return check == null ? null : check == "right" ? "buy" : "sell";
+    return check === null ? null : check === "right" ? "buy" : "sell";
   };
 
   return (
     <div className="flex-row">
       {console.log(stat)}
       {}
+      <div></div>
       <div className={`bar ${redOrGreen(stat[0])}`}></div>
       <div className={`bar ${redOrGreen(stat[1])}`}></div>
       <div className={`bar ${redOrGreen(stat[2])}`}></div>

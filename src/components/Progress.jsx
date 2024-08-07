@@ -11,7 +11,6 @@ function Progress() {
   let total_attempts = +localStorage.getItem("total_attempt") * 10;
   let total_correct = localStorage.getItem("total_correct");
   let win_percent = (total_correct / total_attempts) * 100;
-  let conditional_text = (total_correct / total_attempts) * 100 + "%";
 
   const navigate = useNavigate();
   const goback = () => {
@@ -30,23 +29,26 @@ function Progress() {
         <>
           <div className="achievements row-container">
             <img
+              alt="low"
               className={`achievement ${win_percent < 45 ? "" : "grayscale"} `}
               src={low_image}
             />
             <img
+              alt="average"
               className={`achievement ${
                 win_percent > 45 && win_percent < 75 ? "" : "grayscale"
               } `}
               src={mid_image}
             />
             <img
+              alt="best"
               className={`achievement ${win_percent > 75 ? "" : "grayscale"} `}
               src={high_image}
             />
           </div>
           <div className="row-container progress">
             <div
-              style={{ width: `${win_percent}` + "%" }}
+              style={{ width: `${win_percent}%` }}
               className="progressbar green ontop"
             >
               {total_correct}
@@ -56,9 +58,9 @@ function Progress() {
             </div>
           </div>
           <p>
-            Out of {total_attempts} trades, you managed to get {total_correct}
+            {`Out of ${total_attempts} trades, you managed to get ${total_correct}
             trades right. That leaves you with a win percentage of
-            {Math.round(win_percent * 100) / 100}%
+            ${Math.round(win_percent * 100) / 100}%`}
           </p>
         </>
       )}
