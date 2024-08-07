@@ -29,27 +29,24 @@ function Home() {
       title: "Principle",
       type: "P",
       image: basic_image,
-      status: true,
+      status: false,
     },
     {
       title: "Candlesticks",
       type: "C",
       image: candle_image,
-
       status: true,
     },
     {
       title: "Patterns",
       type: "T",
       image: pattern_image,
-
-      status: true,
+      status: false,
     },
     {
       title: "SMC",
       type: "S",
       image: smc_image,
-
       status: false,
     },
   ];

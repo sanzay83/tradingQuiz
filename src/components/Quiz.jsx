@@ -38,6 +38,10 @@ const Quiz = () => {
     fetchItems();
   }, [level]);
 
+  useEffect(() => {
+    fetchItems();
+  }, [progress]);
+
   const nextQuestion = () => {
     if (noOfQuestion < questions.length - 1) {
       setNoOfQuestion(noOfQuestion + 1);
@@ -76,7 +80,6 @@ const Quiz = () => {
       <div className="quiz-block">
         {error && <p className="error-message">{error}</p>}
         <ProgressPagination stats={progress} />
-        <h3>{`${noOfQuestion + 1} / ${questions.length}`}</h3>
         {!showPopup ? (
           <>
             <img

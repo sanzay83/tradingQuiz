@@ -3,10 +3,9 @@ import React from "react";
 function ProgressPagination({ stats }) {
   let stat = stats;
   const redOrGreen = (check) => {
-    return check == null ? null : check == "right" ? "green" : "red";
+    return check == null ? null : check == "right" ? "buy" : "sell";
   };
 
-  //fill with green if correct,fill with red if incorrect, white bordered empty if not attempted
   return (
     <div className="flex-row">
       {console.log(stat)}
