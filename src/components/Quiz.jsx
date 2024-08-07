@@ -20,7 +20,6 @@ const Quiz = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { level } = location.state;
-  console.log(level);
   const [progress, setProgress] = useState([]);
 
   const fetchItems = async () => {
@@ -36,11 +35,7 @@ const Quiz = () => {
 
   useEffect(() => {
     fetchItems();
-  }, [level]);
-
-  useEffect(() => {
-    fetchItems();
-  }, [progress]);
+  });
 
   const nextQuestion = () => {
     if (noOfQuestion < questions.length - 1) {
@@ -57,9 +52,9 @@ const Quiz = () => {
     const currentQuestion = questions[noOfQuestion];
     if (choice === currentQuestion.buysell) {
       setCorrectCount(correctCount + 1);
-      progress.push("right");
+      setProgress([...progress, "right"]);
     } else {
-      progress.push("wrong");
+      setProgress([...progress, "wrong"]);
     }
     console.log(progress);
     setPopupImage(currentQuestion.answer);

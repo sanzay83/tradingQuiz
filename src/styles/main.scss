@@ -17,6 +17,20 @@ $main-font-color: #ffffff;
   color: white;
 }
 
+.container {
+  display: grid;
+  gap: 20px;
+  max-width: 500px;
+  margin-top: -15px;
+  padding: 10px;
+  background-color: rgba(107, 107, 107, 0.1);
+}
+
+.borded-lines {
+  border: 1px solid $buy-color;
+  border-radius: 5px;
+}
+
 .loader {
   width: 60px;
   height: 60px;

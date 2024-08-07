@@ -54,30 +54,32 @@ function StudyEachItem() {
   return (
     <>
       <div className="main-container">
-        <IoMdArrowRoundBack className="exit" onClick={goback} />
-        <h1>{title}</h1>
-        <div className="each-item">
-          {items.map((item, index) =>
-            item.description !== "none" ? (
-              <div
-                className="card"
-                key={index}
-                onClick={() => handleButtonClick(item)}
-              >
-                <div className="card2">
-                  <img src={item.thumbnail} alt="img" />
-                  <br />
-                  {item.title}
+        <div className="container">
+          <IoMdArrowRoundBack className="exit" onClick={goback} />
+          <h1>{title}</h1>
+          <div className="each-item">
+            {items.map((item, index) =>
+              item.description !== "none" ? (
+                <div
+                  className="card"
+                  key={index}
+                  onClick={() => handleButtonClick(item)}
+                >
+                  <div className="card2">
+                    <img src={item.thumbnail} alt="img" />
+                    <br />
+                    {item.title}
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="card2 disabled">
-                {item.title}
-                <br />
-                Comming Soon
-              </div>
-            )
-          )}
+              ) : (
+                <div className="card2 disabled">
+                  {item.title}
+                  <br />
+                  Comming Soon
+                </div>
+              )
+            )}
+          </div>
         </div>
       </div>
     </>

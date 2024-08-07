@@ -120,11 +120,11 @@ function Home() {
       <div className="home-container">
         <div className="section-title">Quote of the day</div>
 
-        <div className="container">{quotes[randomNumber()]}</div>
+        <div className="container borded-lines">{quotes[randomNumber()]}</div>
       </div>
       <div className="home-container">
         <div className="section-title">Test your Skills</div>
-        <div className="container two-fr">
+        <div className="container borded-lines two-fr">
           {levels.map((item, index) => (
             <button
               key={index}
@@ -147,7 +147,7 @@ function Home() {
       </div>
       <div className="home-container">
         <div className="section-title">Grow Your Knowledge</div>
-        <div className="container two-fr">
+        <div className="container borded-lines two-fr">
           {studyType.map((studyItem, index) =>
             studyItem.status === false ? (
               <button

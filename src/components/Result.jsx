@@ -42,7 +42,7 @@ function Result() {
           +localStorage.getItem("total_attempt") + +1
         )
       : localStorage.setItem("total_attempt", 1);
-  }, []);
+  }, [correctCount]);
 
   const handleHomeClick = () => {
     navigate("/");
@@ -54,29 +54,28 @@ function Result() {
 
   return (
     <div className="main-container align-top">
-      <h2>Trade Results</h2>
-      <div className="result-content">
+      <div className="container">
+        <h2>Trade Results</h2>
         <div className="result-text">
-          <div className="flex-row progress">
+          <div className="progress-line">
             <div
               className="progressbar green"
-              style={{ width: `${winCount}` + "%" }}
+              style={{ width: `${winCount}%` }}
             >
               {correctCount}
             </div>
-            <div
-              className="progressbar red"
-              style={{ width: `${loseCount}` + "%" }}
-            >
+            <div className="progressbar red" style={{ width: `${loseCount}%` }}>
               {10 - correctCount}
             </div>
           </div>
+
           <p>{resultText}</p>
         </div>
-      </div>
-      <div className="buttons-container">
-        <button onClick={handleHomeClick}>Return to Home</button>
-        <button onClick={handleRestartClick}>Restart Quiz</button>
+
+        <div className="buttons-container">
+          <button onClick={handleHomeClick}>Return to Home</button>
+          <button onClick={handleRestartClick}>Restart Quiz</button>
+        </div>
       </div>
     </div>
   );

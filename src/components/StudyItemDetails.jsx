@@ -14,30 +14,32 @@ function StudyItemDetails() {
     location.state;
   return (
     <div className="main-container">
-      <IoMdArrowRoundBack className="exit" onClick={goback} />
+      <div className="container">
+        <IoMdArrowRoundBack className="exit" onClick={goback} />
 
-      <div className="detail-title">
-        <img className="card2" src={thumbnail} alt={title} />
-        <h2>{title}</h2>
-      </div>
-      <div>
-        <div className="section-title">Description</div>
-
-        <div className="container">{description}</div>
-      </div>
-
-      <div>
-        <div className="section-title">Before</div>
-
-        <div className="container">
-          <img src={exampleimage} alt={title} />
+        <div className="detail-title">
+          <img className="card2" src={thumbnail} alt={title} />
+          <h2>{title}</h2>
         </div>
-      </div>
-      <div>
-        <div className="section-title">After</div>
+        <div>
+          <div className="section-title">Description</div>
 
-        <div className="container">
-          <img src={exampleimage2} alt={title} />
+          <div className="container borded-lines">{description}</div>
+        </div>
+
+        <div>
+          <div className="section-title">Before</div>
+
+          <div className="container borded-lines">
+            <img src={exampleimage} alt={title} />
+          </div>
+        </div>
+        <div>
+          <div className="section-title">After</div>
+
+          <div className="container borded-lines">
+            <img src={exampleimage2} alt={title} />
+          </div>
         </div>
       </div>
     </div>

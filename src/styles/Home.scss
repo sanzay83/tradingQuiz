@@ -13,24 +13,8 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.container {
-  display: grid;
-  gap: 20px;
-  max-width: 500px;
-  border: 1px solid $buy-color;
-  border-radius: 5px;
-  margin-top: -15px;
-  padding: 10px;
-  background-color: rgba(107, 107, 107, 0.1);
-}
-
 .two-fr {
   grid-template-columns: 1fr 1fr;
-}
-
-.container img {
-  width: 100%;
-  height: 200px;
 }
 
 .level-container {
@@ -96,6 +80,7 @@
   width: 100%;
   margin-bottom: 10px;
 }
+
 .header {
   display: flex;
   flex-direction: row;
