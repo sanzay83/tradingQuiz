@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Home.scss";
 import "../styles/Progress.scss";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +12,18 @@ function Progress() {
   let total_correct = localStorage.getItem("total_correct");
   let win_percent = (total_correct / total_attempts) * 100;
 
+  const [pastTrades, setPastTrades] = useState([]);
+  const [trades, setTrades] = useState("easyTrades");
   const navigate = useNavigate();
   const goback = () => {
     navigate("/");
   };
+
+  useEffect(() => {
+    const attempts = JSON.parse(localStorage.getItem(trades));
+    setPastTrades(attempts);
+    console.log(trades);
+  }, [trades]);
 
   return (
     <div className="main-container align-top">
@@ -71,6 +79,45 @@ function Progress() {
             trades right. That leaves you with a win percentage of
             ${Math.round(win_percent * 100) / 100}%`}
             </p>
+            <div className="grid two-fr">
+              <button
+                onClick={() => {
+                  setTrades("easyTrades");
+                }}
+              >
+                Easy
+              </button>
+              <button
+                onClick={() => {
+                  setTrades("hardTrades");
+                }}
+              >
+                hard
+              </button>
+            </div>
+            <div className="row-container progress">
+              <div>#</div>
+              <div>Wins</div>
+              <div>Losses</div>
+              <div>Win %</div>
+              <div>Result</div>
+            </div>
+
+            {pastTrades.map((correctCount, index) => {
+              return (
+                <div className="row-container progress">
+                  <div>{index + 1}</div>
+                  <div>{correctCount}</div>
+                  <div>{10 - correctCount}</div>
+                  <div>{`${correctCount * 10}%`}</div>
+                  <div>
+                    {trades == "easyTrades"
+                      ? -1000
+                      : -2000 + correctCount * 100}
+                  </div>
+                </div>
+              );
+            })}
           </>
         )}
       </div>

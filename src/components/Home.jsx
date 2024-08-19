@@ -9,6 +9,7 @@ import pattern_image from "../assets/patterns.png";
 import smc_image from "../assets/smart.png";
 import progress_image from "../assets/trophy.png";
 import avatar_image from "../assets/avataaars.png";
+import CountUp from "react-countup";
 
 function Home() {
   const navigate = useNavigate();
@@ -96,6 +97,15 @@ function Home() {
     navigate("/progress");
   };
 
+  //init starting balance
+  const balance = () => {
+    if (localStorage.getItem("balance") == undefined) {
+      localStorage.setItem("balance", 5000);
+    }
+  };
+
+  balance();
+
   return (
     <div className="main-container align-top">
       <div className="home-container">
@@ -103,8 +113,15 @@ function Home() {
           <div className="header-left">
             <img src={avatar_image} className="avatar" alt="avatar" />
             <div>
-              <div>Welcome,</div>
-              <strong>Trader</strong>
+              <div>Balance:</div>
+              <div>
+                <CountUp
+                  end={localStorage.getItem("balance")}
+                  prefix="$ "
+                  onEnd={() => console.log("Ended! 👏")}
+                  onStart={() => console.log("Started! 💨")}
+                />
+              </div>
             </div>
           </div>
           <div>
