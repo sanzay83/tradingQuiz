@@ -39,7 +39,7 @@ function Result() {
           +localStorage.getItem("total_attempt") + +1
         )
       : localStorage.setItem("total_attempt", 1);
-  }, [correctCount]);
+  }, []);
 
   const handleHomeClick = () => {
     navigate("/");
@@ -48,6 +48,17 @@ function Result() {
   const handleRestartClick = () => {
     navigate("/quiz", { state: { level: level } });
   };
+
+  const pastTrades =
+    JSON.parse(
+      localStorage.getItem(`${level == "easy" ? "easyTrades" : "hardTrades"}`)
+    ) || [];
+
+  const updated = [correctCount, ...pastTrades].slice(0, 50);
+  localStorage.setItem(
+    `${level == "easy" ? "easyTrades" : "hardTrades"}`,
+    JSON.stringify(updated)
+  );
 
   return (
     <div className="main-container align-top">
@@ -67,6 +78,7 @@ function Result() {
           </div>
 
           <p>{resultText}</p>
+          <div>{`Account Balance: `}</div>
         </div>
 
         <div className="buttons-container">
