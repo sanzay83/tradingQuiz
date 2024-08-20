@@ -100,7 +100,7 @@ function Home() {
   //init starting balance
   const balance = () => {
     if (localStorage.getItem("balance") == undefined) {
-      localStorage.setItem("balance", 5000);
+      localStorage.setItem("balance", 10000);
     }
   };
 
@@ -115,12 +115,7 @@ function Home() {
             <div>
               <div>Balance:</div>
               <div>
-                <CountUp
-                  end={localStorage.getItem("balance")}
-                  prefix="$ "
-                  onEnd={() => console.log("Ended! 👏")}
-                  onStart={() => console.log("Started! 💨")}
-                />
+                <CountUp end={localStorage.getItem("balance")} prefix="$ " />
               </div>
             </div>
           </div>
