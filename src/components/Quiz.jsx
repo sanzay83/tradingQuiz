@@ -22,8 +22,6 @@ const Quiz = () => {
   const { level } = location.state;
   const [progress, setProgress] = useState(Array.from(Array(10)));
 
-  const [result, setResult] = useState(true);
-
   const fetchItems = async () => {
     try {
       const response = await axios.get(`${API_URL}/${level}/items`);
@@ -37,7 +35,7 @@ const Quiz = () => {
 
   useEffect(() => {
     fetchItems();
-  }, []);
+  });
 
   const nextQuestion = () => {
     if (noOfQuestion < questions.length - 1) {
@@ -55,19 +53,17 @@ const Quiz = () => {
     if (choice === currentQuestion.buysell) {
       setCorrectCount(correctCount + 1);
       progress[noOfQuestion] = "buy";
-      setResult(true);
       localStorage.setItem(
         "balance",
-        +localStorage.getItem("balance") + +(level == "easy" ? 100 : 50)
+        +localStorage.getItem("balance") + +(level === "easy" ? 100 : 50)
       );
       setProgress(progress);
     } else {
       progress[noOfQuestion] = "sell";
       setProgress(progress);
-      setResult(false);
       localStorage.setItem(
         "balance",
-        +localStorage.getItem("balance") - +(level == "easy" ? 100 : 200)
+        +localStorage.getItem("balance") - +(level === "easy" ? 100 : 200)
       );
     }
     setPopupImage(currentQuestion.answer);

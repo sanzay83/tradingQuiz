@@ -31,7 +31,7 @@ function Progress() {
         <div className="exit">
           <IoMdArrowRoundBack size={"2rem"} onClick={goback} />
         </div>
-        {total_attempts === 0 ? (
+        {pastTrades === null ? (
           <p>
             You have not taken any trades. Your progress stats will be available
             after you take some trades.
@@ -102,16 +102,15 @@ function Progress() {
               <div>Win %</div>
               <div>Result</div>
             </div>
-
             {pastTrades.map((correctCount, index) => {
               return (
-                <div className="row-container progress">
+                <div key={index} className="row-container progress">
                   <div>{index + 1}</div>
                   <div>{correctCount}</div>
                   <div>{10 - correctCount}</div>
                   <div>{`${correctCount * 10}%`}</div>
                   <div>
-                    {trades == "easyTrades"
+                    {trades === "easyTrades"
                       ? -1000
                       : -2000 + correctCount * 100}
                   </div>
