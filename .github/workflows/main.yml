@@ -15,5 +15,5 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.aapugo.com
-          username: santosh
+          username: santosh@aapugu.com
           password: ${{ secrets.FTP_PASSWORD }}
