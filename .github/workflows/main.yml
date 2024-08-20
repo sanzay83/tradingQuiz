@@ -14,6 +14,6 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.aapugo.com
+          server: ftp.aapugu.com
           username: santosh@aapugu.com
-          password: ${{ secrets.FTP_PASSWORD }}
+          password: ${{ secrets.FTP_PASSWORDS }}
