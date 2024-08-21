@@ -37,7 +37,7 @@ function Splashscreen() {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  });
 
   return (
     <div className="main-container">

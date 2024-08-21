@@ -99,7 +99,7 @@ function Home() {
 
   //init starting balance
   const balance = () => {
-    if (localStorage.getItem("balance") == undefined) {
+    if (localStorage.getItem("balance") === undefined) {
       localStorage.setItem("balance", 10000);
     }
   };

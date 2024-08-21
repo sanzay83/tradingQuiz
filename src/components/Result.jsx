@@ -39,7 +39,7 @@ function Result() {
           +localStorage.getItem("total_attempt") + +1
         )
       : localStorage.setItem("total_attempt", 1);
-  }, []);
+  });
 
   const handleHomeClick = () => {
     navigate("/");
@@ -51,12 +51,12 @@ function Result() {
 
   const pastTrades =
     JSON.parse(
-      localStorage.getItem(`${level == "easy" ? "easyTrades" : "hardTrades"}`)
+      localStorage.getItem(`${level === "easy" ? "easyTrades" : "hardTrades"}`)
     ) || [];
 
   const updated = [correctCount, ...pastTrades].slice(0, 50);
   localStorage.setItem(
-    `${level == "easy" ? "easyTrades" : "hardTrades"}`,
+    `${level === "easy" ? "easyTrades" : "hardTrades"}`,
     JSON.stringify(updated)
   );
 
