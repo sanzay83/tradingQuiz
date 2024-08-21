@@ -34,7 +34,7 @@ function Progress() {
         {pastTrades === null ? (
           <p>
             You have not taken any trades yet. Your progress stats will be
-            available after you complete some trades.
+            available after you complete trades.
           </p>
         ) : (
           <>
