@@ -31,4 +31,3 @@ jobs:
           username: santosh@aapugu.com
           password: ${{ secrets.FTP_PASSWORDS }}
           local-dir: ./build/
-          server-dir: ./tradingquiz.aapugu.com/
