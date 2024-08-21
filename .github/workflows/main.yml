@@ -1,29 +1,31 @@
+name: 🚀 Deploy trading quiz website on push
+
 on:
   push:
-    branches:
-      - master
-name: 🚀 Deploy website on push
+    branches: [ gh-pages ]
+
 jobs:
-  web-deploy:
+  deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      - name: Use Node.js 16
+      - name: Use Node.js 20
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
-
+          node-version: "20"
+      - name: Install Dependencies Project
+        run: npm ci
       - name: 🔨 Build Project
-        run: |
-          npm install
-          CI=false npm run build
+        run: npm run build
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.aapugu.com
+          ftp-server: sftp://ftp.aapugu.com
           username: santosh@aapugu.com
           password: ${{ secrets.FTP_PASSWORDS }}
+          local-dir: ./build
+          server-dir: /tradingquiz.aapugu.com
