@@ -33,8 +33,8 @@ function Progress() {
         </div>
         {pastTrades === null ? (
           <p>
-            You have not taken any trades. Your progress stats will be available
-            after you take some trades.
+            You have not taken any trades yet. Your progress stats will be
+            available after you take some trades.
           </p>
         ) : (
           <>
